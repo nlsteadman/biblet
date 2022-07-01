@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  get '/hello', to: 'application#hello_world'
 
+  resources :authors
+  resources :booktags
+  resources :tags
+  resources :books
+  resources :reviews
+  resources :users
   get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }

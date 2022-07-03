@@ -6,7 +6,7 @@ import BookDetail from './components/BookDetail';
 import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import { baseUrl, headers } from './Globals';
+import { baseUrl, headers, getToken } from './Globals';
 
 
 const App = () => {
@@ -31,7 +31,8 @@ const App = () => {
       fetch(baseUrl + '/get-current-user', {
         method: "GET",
         headers: {
-          ...headers
+          ...headers,
+          ...getToken()
         }
       })
       .then(r => r.json())
@@ -41,13 +42,16 @@ const App = () => {
     if(loggedIn) {
       fetch(baseUrl + '/books', {
         headers: {
-          ...headers
+          ...headers,
+          ...getToken()
         }
       })
         .then(r => r.json())
         .then(data => setBooks(data))
     }
   }, [loggedIn])
+
+
 
   return (
     <Router>

@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  skip_before_action :authorized, only: [:index]
   before_action :set_author, only: [:show, :update, :destroy]
 
   # GET /authors

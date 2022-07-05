@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:index, :create]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -10,12 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @user = User.find_by(id: session[:user_id])
-    if user
-      render json: @user, include: [:books, :reviews]
-    else
-      render json: { error: "Not authorized" }, status: :unauthorized
-    end
+   render json: @user
   end
 
   # POST /users
@@ -23,7 +19,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      @token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: @token }, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

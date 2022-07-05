@@ -47,7 +47,7 @@ const Login = ({ loginUser, loggedIn }) => {
                 <input type="password" name="password" id="password" value={ password } onChange={ e => setPassword(e.target.value) }/>
             </div>
 
-            <input type="submit" value="Create Account" />
+            <input type="submit" value="Login" />
         </form>
     </div>
   )

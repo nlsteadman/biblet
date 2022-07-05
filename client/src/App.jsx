@@ -55,14 +55,14 @@ const App = () => {
 
   return (
     <Router>
-    <Navbar loggedIn={ loggedIn } logoutUser={ logoutUser } currentUser={ currentUser } />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup loginUser={ loginUser } loggedIn={ loggedIn } />} />
-            <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn } />} />
-            <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
-            <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } />} />
-        </Routes>
+      <Navbar loggedIn={ loggedIn } logoutUser={ logoutUser } currentUser={ currentUser } />
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup loginUser={ loginUser } loggedIn={ loggedIn } />} />
+          <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn } />} />
+          <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
+          <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } />} />
+      </Routes>
     </Router>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
 
@@ -21,7 +21,7 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
     const loggedInLinks = () => {
         return (
             <ul>
-                <h1>Hi, { currentUser.username }!</h1>
+                <h1>Hi, { currentUser }!</h1>
                 <li><Link to="/">Homepage</Link></li>
                 <li><Link to="/books">Books</Link></li>
                 <li><a href=" " onClick={ handleLogout }>Logout</a></li>

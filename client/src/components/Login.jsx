@@ -3,15 +3,15 @@ import { baseUrl, headers } from '../Globals';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ loginUser, loggedIn }) => {
-    const [username, setUsername] = useState(" ");
-    const [password, setPassword] = useState(" ");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         if (loggedIn) {
             navigate('/books')
         }
-    })
+    }, [loggedIn])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -21,9 +21,9 @@ const Login = ({ loginUser, loggedIn }) => {
             password
         }
 
-        fetch(baseUrl + "/login", {
+        fetch(baseUrl + '/login', {
             method: "POST",
-            headers: headers,
+            headers,
             body: JSON.stringify(params)
         })
             .then(r => r.json())

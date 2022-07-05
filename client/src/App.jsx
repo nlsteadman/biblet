@@ -35,8 +35,8 @@ const App = () => {
           ...getToken()
         }
       })
-      .then(r => r.json())
-      .then(user => loginUser(user))
+        .then(r => r.json())
+        .then(user => loginUser(user))
     }
 
     if(loggedIn) {

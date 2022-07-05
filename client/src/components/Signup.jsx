@@ -25,7 +25,7 @@ const Signup = ({ loginUser, loggedIn }) => {
 
         fetch(baseUrl + '/users', {
             method: "POST",
-            headers: headers,
+            headers,
             body: JSON.stringify(params)
         })
             .then(r => r.json())

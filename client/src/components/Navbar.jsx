@@ -21,10 +21,10 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
     const loggedInLinks = () => {
         return (
             <ul>
-                <h2>Welcome back, { currentUser.username }!</h2>
                 <li><Link to="/">Homepage</Link></li>
                 <li><Link to="/books">Books</Link></li>
                 <li><a href=" " onClick={ handleLogout }>Logout</a></li>
+                <li>Welcome back, { currentUser.username }!</li>
             </ul>
         )
     }

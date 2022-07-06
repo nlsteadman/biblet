@@ -2,20 +2,21 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BookCard from './BookCard';
 
-const BookList = ({ loggedIn, books, authors }) => {
+const BookList = ({ loggedIn, books }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
         if( !loggedIn ) {
             navigate('/login');
         }
-    }, [loggedIn])
+    }, [loggedIn, navigate])
 
     const bookCards = books.map(book => <BookCard key={ book.id } book={ book } />)
     
   return (
     <div>
-        <h1>Books</h1>
+        <h1>Bib*let</h1>
+        <h2>Books</h2>
         { bookCards }
     </div>
   )

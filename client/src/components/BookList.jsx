@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BookCard from './BookCard';
 
-const BookList = ({ loggedIn, books }) => {
+const BookList = ({ loggedIn, books, authors }) => {
     const navigate = useNavigate();
 
     useEffect(() => {

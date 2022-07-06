@@ -7,7 +7,7 @@ const BookCard = ({ book }) => {
   return (
     <div>
         <img src={ book.image_url } alt="book cover" height="400" width="250" />
-        <p>Author: { book.author }</p>
+        <p>Author: { book.author_id.name }</p>
         <p>{ book.description }</p>
         <button onClick={ () => navigate(`/books/${ book.id }`) }>Click for more</button>
         <br />

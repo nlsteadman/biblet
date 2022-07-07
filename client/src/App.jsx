@@ -14,10 +14,17 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [books, setBooks] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  
 
   const loginUser = user => {
-    setCurrentUser(user);
-    setLoggedIn(true);
+    if (user) {
+      setCurrentUser(user);
+      setLoggedIn(true);
+    } else {
+      setCurrentUser(null);
+      setLoggedIn(false);
+      alert("This user doesn't exist");
+    }
   }
 
   const logoutUser = () => {

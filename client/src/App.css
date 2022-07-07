@@ -16,6 +16,7 @@ h2 {
 h3 {
   margin-left: 40px;
   font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 40px;
 }
 
 p {
@@ -81,13 +82,47 @@ input {
   margin-left: 50px;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-right: 80px;
 }
 
 #bookimage {
-  flex-basis: 40%
+  flex-basis: 20%
 }
 
 #bookinfo {
-  padding-left: 20px;
+  padding-left: 50px;
+}
+
+#heading {
+  font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 30px;
+  color:rgb(234, 21, 28);
+}
+
+#detail-card {
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-right: 80px;
+}
+
+#detail-book-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+#tags{
+  flex-basis: 20%
+}
+
+#detail-info {
+  padding-left: 50px;
+  padding-right: 80px;
+  padding-top: 50px;
 }

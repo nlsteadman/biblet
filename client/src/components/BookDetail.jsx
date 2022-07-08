@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import pic from '../assets/pic.png';
+
 
 const BookDetail = ({ books, loggedIn }) => {
     const [book, setBook] = useState({});
@@ -20,6 +22,17 @@ const BookDetail = ({ books, loggedIn }) => {
 
   return (
     <div>
+        <div id="header">
+            <div id="logo">
+                <img src={ pic } alt="logo" height="140px" width="140px" />
+            </div>
+            <div id="title">
+                <h1>Bib*let</h1>
+            </div>
+            <div id="logo">
+                <img src={ pic } alt="logo" height="140px" width="140px" />
+            </div>
+        </div>
         <h3>{ book.title }</h3>
         <div id="detail-card">
             <div id="detail-book-img">

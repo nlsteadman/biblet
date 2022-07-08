@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { baseUrl, headers } from '../Globals';
 import { useNavigate } from 'react-router-dom';
+import pic from '../assets/pic.png';
+
 
 const Login = ({ loginUser, loggedIn }) => {
     const [username, setUsername] = useState('');
@@ -36,7 +38,17 @@ const Login = ({ loginUser, loggedIn }) => {
 
   return (
     <div>
-        <h1>Bib*let</h1>
+        <div id="header">
+            <div id="logo">
+                <img src={ pic } alt="logo" height="140px" width="140px" />
+            </div>
+            <div id="title">
+                <h1>Bib*let</h1>
+            </div>
+            <div id="logo">
+                <img src={ pic } alt="logo" height="140px" width="140px" />
+            </div>
+        </div>
         <h2>Login</h2>
         <form onSubmit={ handleSubmit }>
             <div>

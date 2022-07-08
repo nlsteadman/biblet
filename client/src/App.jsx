@@ -59,8 +59,6 @@ const App = () => {
     }
   }, [loggedIn])
 
-
-
   return (
     <Router>
       <Navbar loggedIn={ loggedIn } logoutUser={ logoutUser } currentUser={ currentUser } />

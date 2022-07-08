@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
+import { baseUrl, headers, getToken } from '../Globals';
 
 
 const BookDetail = ({ books, loggedIn }) => {
@@ -16,9 +17,11 @@ const BookDetail = ({ books, loggedIn }) => {
     }, [loggedIn, navigate])
 
     useEffect(() => {
-        const bb = books.find(b => b.id.toString() === id);
+        const bb = books.find(book => book.id.toString() === id);
         setBook(bb);
+        
     }, [id, books])
+
 
   return (
     <div>

@@ -18,25 +18,25 @@ const Home = () => {
             </div>
         </div>
         <div>
+            <h3 id="animate">
+                Welcome to Bib*let!!! 
+            </h3>
+            <h4>
+                * A rad summer reading list for cool kids who love to read! *
+            </h4>
             <ul id="welcome">
-                <li id="animate">
-                    Welcome to Bib*let!!! 
+                <li>
+                    - Find your next great read <img src={ book } alt="book" height="40px" width="40px" />,
                 </li>
                 <li>
-                    A rad summer reading list for cool kids who love to read!
+                    - add it to your reading list <img src={ list } alt="list" height="40px" width="40px" />,
                 </li>
                 <li>
-                    Find your next great read <img src={ book } alt="book" height="40px" width="40px" />,
+                    - and check it off when you're done! ✅
                 </li>
-                <li>
-                    add it to your reading list <img src={ list } alt="list" height="40px" width="40px" />,
-                </li>
-                <li>
-                    and check it off when you're done! ✅
-                </li>
-                <li>
+                <h4>
                     Need suggestions for what to read? We have those!
-                </li>
+                </h4>
             </ul>
             <br/>
             <br/>

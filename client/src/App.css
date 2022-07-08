@@ -19,15 +19,16 @@ h3 {
   font-size: 40px;
 }
 
+h4 {
+  font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 40px;
+  text-align: center;
+  color: rgb(234, 21, 28);
+}
+
 p {
   font-family: "PT Sans", Calibri, Tahoma, sans-serif;
   font-size: 20px;
-}
-
-li {
-  font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
-  font-size: 40px;
-  list-style: none;
 }
   
 button {
@@ -56,6 +57,9 @@ button {
     text-align: center;
     padding: 10px 20px;
     text-decoration: none;
+    font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+    font-size: 40px;
+    list-style: none;
     }
 #nav li a:hover {
     background-color:orange;
@@ -142,11 +146,17 @@ input {
   color: orange;
   padding-top: 10px;
   padding-left: 15px;
+  font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 40px;
+  list-style: none;
 }
 
 #welcome {
   color:rgb(234, 21, 28);
   text-align: center;
+  font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 35px;
+  list-style: none;
 }
 
 #animate { 
@@ -168,9 +178,9 @@ input {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
-  display: inline-block;
-      font-size: 60px;
-}
+  font-size: 60px;
+  padding-right: 40px;
+  text-align: center;}
 
 @keyframes textclip {
   to {

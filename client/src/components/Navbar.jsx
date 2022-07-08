@@ -6,11 +6,13 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
 
     const loggedOutLinks = () => {
         return (
-            <ul>
-                <li><Link to="/">Homepage</Link></li>
-                <li><Link to="/signup">Signup</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul>
+            <div id="nav">
+                <ul>
+                    <li><Link to="/">Homepage</Link></li>
+                    <li><Link to="/signup">Signup</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                </ul>
+            </div>
         )
     }
 
@@ -21,12 +23,14 @@ const Navbar = ({ loggedIn, logoutUser, currentUser }) => {
 
     const loggedInLinks = () => {
         return (
-            <ul>
-                <li><Link to="/">Homepage</Link></li>
-                <li><Link to="/books">Books</Link></li>
-                <li><a href=" " onClick={ handleLogout }>Logout</a></li>
-                <li>Welcome back, { currentUser.username }!</li>
-            </ul>
+            <div id="nav">
+                <ul>
+                    <li><Link to="/">Homepage</Link></li>
+                    <li><Link to="/books">Books</Link></li>
+                    <li><a href=" " onClick={ handleLogout }>Logout</a></li>
+                    <li id="username">Welcome back, { currentUser.username }!</li>
+                </ul>
+            </div>
         )
     }
 

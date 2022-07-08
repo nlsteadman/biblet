@@ -62,6 +62,7 @@ const Login = ({ loginUser, loggedIn }) => {
 
             <input type="submit" value="Login" />
         </form>
+        <br/>
     </div>
   )
 }

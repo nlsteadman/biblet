@@ -131,8 +131,9 @@ input {
 }
 
 #attribute {
-  position: absolute;
+  position: relative;
+  bottom: 0;
   width: 100%;
-  bottom: 10px;
-  text-align: center;
+  color: #ffffff;
+  padding: 15px 0;
 }

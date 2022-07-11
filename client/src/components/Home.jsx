@@ -2,8 +2,12 @@ import React from 'react';
 import pic from '../assets/pic.png';
 import book from '../assets/book.png';
 import list from '../assets/list.png';
+import BookCard from './BookCard';
 
-const Home = () => {
+const Home = ({ books }) => {
+
+    const bookCards = books.map(book => <BookCard key={ book.id } book={ book } />)
+
   return (
     <div>
         <div id="header">
@@ -40,6 +44,9 @@ const Home = () => {
             </ul>
             <br/>
             <br/>
+            <div>
+                { bookCards }
+            </div>
         </div>
     </div>
   )

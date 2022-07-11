@@ -68,7 +68,7 @@ button {
 
 label {
   font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 input {
@@ -142,7 +142,7 @@ input {
   text-align: center;
 }
 
-#username {
+#currentUser {
   color: orange;
   padding-top: 10px;
   padding-left: 15px;

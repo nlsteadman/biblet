@@ -5,7 +5,7 @@ import pic from '../assets/pic.png';
 import { baseUrl, headers, getToken } from '../Globals';
 
 
-const BookDetail = ({ books, loggedIn }) => {
+const BookDetail = ({ loggedIn }) => {
     const [book, setBook] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
@@ -15,13 +15,22 @@ const BookDetail = ({ books, loggedIn }) => {
             navigate('/login');
         }
     }, [loggedIn, navigate])
+    
 
     useEffect(() => {
-        const bb = books.find(book => book.id.toString() === id);
-        setBook(bb);
-        
-    }, [id, books])
-
+        // const bb = books.find(book => book.id.toString() === id);
+        // setBook(bb);
+        if(loggedIn) {
+            fetch(baseUrl + '/books/' + id, {
+                headers: {
+                    ...headers,
+                    ...getToken()
+                  }
+            })
+                .then(r => r.json())
+                .then(data => setBook(data))
+        }
+    }, [loggedIn, id])
 
   return (
     <div>

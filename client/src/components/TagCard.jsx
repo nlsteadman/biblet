@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const TagCard = ({ tag, setTag }) => {
+const TagCard = ({ tag }) => {
 
     
   return (

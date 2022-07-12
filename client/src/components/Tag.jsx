@@ -7,6 +7,7 @@ const Tag = ({ loggedIn }) => {
     const { id } = useParams()
     const [bookTags, setBookTags] = useState([]);
     const [tag, setTag] = useState({ books: [] });
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         if(loggedIn) {
@@ -17,7 +18,7 @@ const Tag = ({ loggedIn }) => {
                 }
             })
                 .then(r => r.json())
-                .then(data => setBookTags(data))
+                .then(bookTags => setBookTags(bookTags))
         }
     }, [loggedIn])
 
@@ -30,19 +31,20 @@ const Tag = ({ loggedIn }) => {
                 }
             })
                 .then(r => r.json())
-                .then(data => setTag(data))
+                .then(tag => setTag(tag))
         }
     }, [loggedIn, id])
 
     const bookCard = tag.books.map(book => {
         return <BookCard
-            // key={ book.id }
+            key={ book.id }
+            book={ book }
         />
     })
 
   return (
     <div>
-        <h2>All titles { Tag.content }</h2>
+        <h2>All titles { tag.content }</h2>
         { bookCard }
     </div>
   )

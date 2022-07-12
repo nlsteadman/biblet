@@ -7,7 +7,7 @@ import { baseUrl, headers, getToken } from '../Globals';
 
 
 const BookDetail = ({ loggedIn, books, tags, setTag }) => {
-    const [book, setBook] = useState({});
+    const [book, setBook] = useState({ tags: [] });
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const BookDetail = ({ loggedIn, books, tags, setTag }) => {
         }
     }, [loggedIn, id, books])
 
-    const tagCards = tags.map(tag => <TagCard key={ tag.id } tag={ tag } setTag={ setTag }/>)
+    const tagCards = book.tags.map(tag => <TagCard key={ tag.id } tag={ tag } />)
 
   return (
     <div>

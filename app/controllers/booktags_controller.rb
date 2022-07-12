@@ -1,16 +1,17 @@
 class BooktagsController < ApplicationController
+  skip_before_action :authorized, only: [:index, :create]
   before_action :set_booktag, only: [:show, :update, :destroy]
 
   # GET /booktags
   def index
     @booktags = Booktag.all
 
-    render json: @booktags
+    render json: @booktags, include: [:book, :tag]
   end
 
   # GET /booktags/1
   def show
-    render json: @booktag
+    render json: @booktag, include: [:book, :tag]
   end
 
   # POST /booktags

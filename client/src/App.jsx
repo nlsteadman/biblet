@@ -7,12 +7,14 @@ import BookDetail from './components/BookDetail';
 import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Tag from "./components/Tag";
 import { baseUrl, headers, getToken } from './Globals';
 
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [books, setBooks] = useState([]);
+  const [tags, setTags] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   
 
@@ -57,6 +59,17 @@ const App = () => {
         .then(r => r.json())
         .then(data => setBooks(data))
     }
+
+    if(loggedIn) {
+      fetch(baseUrl + '/tags', {
+        headers: {
+          ...headers,
+          ...getToken()
+        }
+      })
+        .then(r => r.json())
+        .then(data => setTags(data))
+    }
   }, [loggedIn])
 
   return (
@@ -67,7 +80,8 @@ const App = () => {
           <Route path="/signup" element={<Signup loginUser={ loginUser } loggedIn={ loggedIn } />} />
           <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn } />} />
           <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
-          <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } />} />
+          <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } tags={ tags } />} />
+          <Route path="/tags/:id" element={<Tag loggedIn={ loggedIn } books={ books } tags={ tags } />} />
       </Routes>
     </Router>
   );

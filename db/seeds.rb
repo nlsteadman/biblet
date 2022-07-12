@@ -7,11 +7,12 @@ Book.destroy_all
 Review.destroy_all
 Author.destroy_all
 Tag.destroy_all
+Booktag.destroy_all
 
 25.times do
     User.create(
         username: Faker::Internet.username,
-        password_digest: Faker::Internet.password
+        password: Faker::Internet.password
     )
 end
 
@@ -61,49 +62,49 @@ Author.create(
 
 Book.create(
     title: 'Zachary Ying and the Dragon Emperor (Zachary Ying, #1)',
-    author_id: 36,
+    author_id: Author.first.id,
     description: "A middle grade contemporary fantasy that follows a young boy as he journeys across China to seal the underworld shut and save the mortal realm.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649866448l/59365584.jpg'
 )
 
 Book.create(
     title: 'Outdoor Kids in an Inside World: Getting Your Family Out of the House and Radically Engaged with Nature',
-    author_id: 37,
+    author_id: Author.second.id,
     description: "The indispensable case for parenting tough, curious, and competent kids who feel at home in the outdoors, from the New York Times bestselling author and host of the TV series and podcast MeatEater",
     image_url:' https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639379419l/57569786.jpg'
 )
 
 Book.create(
     title: 'The Marvellers (Marvellerverse #1)',
-    author_id: 38,
+    author_id: Author.third.id,
     description: "Author Dhonielle Clayton makes her middle-grade debut with a fantasy adventure set in a global magic school in the sky.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1620716941l/56896065.jpg'
 )
 
 Book.create(
     title: 'I Am Able to Shine',
-    author_id: 39,
+    author_id: Author.fourth.id,
     description: "An affirmative, empowering story about embracing your identity and finding your voice, inspired in part by debut author Korey Watari’s experiences growing up Asian American, and illustrated by her husband, Mike Wu, Pixar artist and creator of the Ellie series.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1644453050l/58957681._SX318_.jpg'
 )
 
 Book.create(
     title: 'Rise of the School for Good and Evil (The School for Good and Evil #0.5)',
-    author_id: 40,
+    author_id: Author.fifth.id,
     description: "The battle between Good and Evil begins. Two brothers. One Good. One Evil. Together they watch over the Endless Woods. Together they choose the students for the School for Good and Evil.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1638953590l/59773289.jpg'
 )
 
 Book.create(
     title: 'Small Town Pride',
-    author_id: 41,
+    author_id: 90,
     description: "From acclaimed author Phil Stamper (The Gravity of Us and As Far as Youll Take Me) comes a poignant coming-of-age, contemporary middle grade debut novel about finding your place, using your voice, and the true meaning of pride. Perfect for fans of Rick by Alex Gino and The Best at It by Maulik Pancholy.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1644338790l/58932372.jpg'
 )
 
 Book.create(
     title: 'The Prince of Nowhere',
-    author_id: 42,
+    author_id: 91,
     description: "Roda isnt afraid of the monsters that roam the wilds of the Aerlands. Shes safe in her small town, surrounded by a wall of freezing, enchanted mist that keeps the beasts away. So when Roda rescues an injured crow on the instruction of her secret pen pal, Anonymous – whose letters arrive without warning and correctly predict the future – shes surprised to learn shes brought one of the so-called monsters home. Because her crow is really a shape-shifting boy named Ignis.",
     image_url: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1635101334l/58733672.jpg'
 )
@@ -140,7 +141,64 @@ Tag.create(
     content: 'funny'
 )
 
+Booktag.create(
+    book_id: 32,
+    tag_id: 16
+)
 
+Booktag.create(
+    book_id: 32,
+    tag_id: 13
+)
 
+Booktag.create(
+    book_id: 33,
+    tag_id: 14
+)
+
+Booktag.create(
+    book_id: 35,
+    tag_id: 16
+)
+
+Booktag.create(
+    book_id: 35,
+    tag_id: 15
+)
+
+Booktag.create(
+    book_id: 36,
+    tag_id: 18
+)
+
+Booktag.create(
+    book_id: 36,
+    tag_id: 16
+)
+
+Booktag.create(
+    book_id: 36,
+    tag_id: 14
+)
+
+Booktag.create(
+    book_id: 37,
+    tag_id: 13
+)
+
+Booktag.create(
+    book_id: 37,
+    tag_id: 14
+)
+
+Booktag.create(
+    book_id: 38,
+    tag_id: 13
+)
+
+Booktag.create(
+    book_id: 38,
+    tag_id: 17
+)
 
 puts "✅ Done seeding!"

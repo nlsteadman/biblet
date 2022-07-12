@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
+import TagCard from './TagCard';
 import { baseUrl, headers, getToken } from '../Globals';
 
 
-const BookDetail = ({ loggedIn }) => {
+const BookDetail = ({ loggedIn, books, tags, setTag }) => {
     const [book, setBook] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
@@ -18,8 +19,9 @@ const BookDetail = ({ loggedIn }) => {
     
 
     useEffect(() => {
-        // const bb = books.find(book => book.id.toString() === id);
-        // setBook(bb);
+        if( loggedIn ) {
+            setBook(books.find(book => book.id.toString() === id));
+        }
         if(loggedIn) {
             fetch(baseUrl + '/books/' + id, {
                 headers: {
@@ -30,7 +32,9 @@ const BookDetail = ({ loggedIn }) => {
                 .then(r => r.json())
                 .then(data => setBook(data))
         }
-    }, [loggedIn, id])
+    }, [loggedIn, id, books])
+
+    const tagCards = tags.map(tag => <TagCard key={ tag.id } tag={ tag } setTag={ setTag }/>)
 
   return (
     <div>
@@ -52,7 +56,7 @@ const BookDetail = ({ loggedIn }) => {
             </div>
             <div id="tags">
                 <h3 id="heading">Tags: </h3>
-                {/* <p>{ book.tag.first }</p> */}
+                { tagCards }
             </div>
         </div>
         <div id="detail-info">

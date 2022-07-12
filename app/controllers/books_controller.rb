@@ -1,17 +1,17 @@
 class BooksController < ApplicationController
-  # skip_before_action :authorized, only: [:index, :show]
+  skip_before_action :authorized, only: [:index, :show]
   before_action :set_book, only: [:show, :update, :destroy]
 
   # GET /books
   def index
     @books = Book.all
 
-    render json: @books, include: [:author, :reviews, :tags]
+    render json: @books, include: [:author, :reviews, :tags, :booktags, :users]
   end
 
   # GET /books/1
   def show
-    render json: @book, include: [:author, :reviews, :tags]
+    render json: @book, include: [:author, :reviews, :tags, :booktags, :users]
   end
 
   # POST /books

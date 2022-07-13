@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 import TagCard from './TagCard';
 import { baseUrl, headers, getToken } from '../Globals';
+import ReviewCard from './ReviewCard';
 
 
 const BookDetail = ({ loggedIn, books, tags, setTag }) => {
     const [book, setBook] = useState({ tags: [] });
     const { id } = useParams();
     const navigate = useNavigate();
+    console.log("I'm at the top")
 
     useEffect(() => {
         if( !loggedIn ) {
@@ -22,20 +24,34 @@ const BookDetail = ({ loggedIn, books, tags, setTag }) => {
         if( loggedIn ) {
             setBook(books.find(book => book.id.toString() === id));
         }
-        if(loggedIn) {
-            fetch(baseUrl + '/books/' + id, {
-                headers: {
-                    ...headers,
-                    ...getToken()
-                  }
-            })
-                .then(r => r.json())
-                .then(data => setBook(data))
-        }
-    }, [loggedIn, id, books])
+        console.log("I'm going to set the book")
+        // if(loggedIn) {
+        //     fetch(baseUrl + '/books/' + id, {
+        //         headers: {
+        //             ...headers,
+        //             ...getToken()
+        //           }
+        //     })
+        //         .then(r => r.json())
+        //         .then(book => setBook(book))
+        // }
+        
+    }, [loggedIn])
+
+    const authorDetails = () => {
+        if (book.author) {
+            return ( 
+                <div>
+                    <p>{ book.author.name }</p>
+                    <p>{ book.author.statement }</p>
+                    <img src={ book.author.image_url }/>
+                </div>
+            )
+        } 
+    }
 
     const tagCards = book.tags.map(tag => <TagCard key={ tag.id } tag={ tag } />)
-
+    console.log(book)
   return (
     <div>
         <div id="header">
@@ -63,9 +79,7 @@ const BookDetail = ({ loggedIn, books, tags, setTag }) => {
             <div>
                 <p>{ book.description }</p>
                 <h3 id="heading">About the Author: </h3>
-                {/* <p>{ book.author.name }</p>
-                <p>{ book.author.statement }</p>
-                <p>{ book.author.image_url }</p> */}
+                { authorDetails() }
             </div>
             <div>
                 <h3 id="heading">Reviews: </h3>

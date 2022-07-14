@@ -116,7 +116,11 @@ input {
 }
 
 #tags{
-  flex-basis: 20%
+  flex-basis: 20%;
+  /* margin-right: 50px; */
+  outline:rgb(234, 21, 28) dotted 10px;
+  padding-bottom: 40px;
+  justify-content: center;
 }
 
 #detail-info {
@@ -210,4 +214,9 @@ input {
 
 #review-cards {
   margin-left: 50px;
+}
+
+#book-description {
+  text-align: left;
+  width: 1000px;
 }

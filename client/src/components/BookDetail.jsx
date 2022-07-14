@@ -62,7 +62,7 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
         <h3>{ book.title }</h3>
         <div id="detail-card">
             <div id="detail-book-img">
-                <img src={ book.image_url } alt="a book cover" height="450" width="300"/>
+                <img src={ book.image_url } alt="a book cover" height="550" width="400"/>
             </div>
             <div id="tags">
                 <h3 id="heading">Tags: </h3>
@@ -70,8 +70,10 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
             </div>
         </div>
         <div id="detail-info">
-            <div>
+            <div id="book-description">
                 <p>{ book.description }</p>
+            </div>
+            <div>
                 <h3 id="heading">About the Author: </h3>
                 { authorDetails() }
             </div>

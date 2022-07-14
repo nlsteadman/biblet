@@ -3,55 +3,49 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 import TagCard from './TagCard';
-import { baseUrl, headers, getToken } from '../Globals';
 import ReviewCard from './ReviewCard';
 
 
-const BookDetail = ({ loggedIn, books, tags, setTag }) => {
-    const [book, setBook] = useState({ tags: [] });
+const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
+    const [book, setBook] = useState({ tags: [], reviews: [] });
     const { id } = useParams();
     const navigate = useNavigate();
-    console.log("I'm at the top")
 
     useEffect(() => {
         if( !loggedIn ) {
             navigate('/login');
         }
     }, [loggedIn, navigate])
-    
+
 
     useEffect(() => {
         if( loggedIn ) {
             setBook(books.find(book => book.id.toString() === id));
         }
-        console.log("I'm going to set the book")
-        // if(loggedIn) {
-        //     fetch(baseUrl + '/books/' + id, {
-        //         headers: {
-        //             ...headers,
-        //             ...getToken()
-        //           }
-        //     })
-        //         .then(r => r.json())
-        //         .then(book => setBook(book))
-        // }
-        
     }, [loggedIn])
+
+    const bookReviews = reviews.filter(review => review.book_id.toString() === id);
 
     const authorDetails = () => {
         if (book.author) {
             return ( 
-                <div>
-                    <p>{ book.author.name }</p>
-                    <p>{ book.author.statement }</p>
-                    <img src={ book.author.image_url }/>
+                <div id="author-div">
+                    <div id="author-pic">
+                        <img src={ book.author.image_url } alt={'author image'} height="200"/>
+                    </div>
+                    <div id="author-info">
+                        <p>Name: { book.author.name }</p>
+                        <p>Statement: { book.author.statement }</p>
+                    </div>
                 </div>
             )
         } 
     }
 
     const tagCards = book.tags.map(tag => <TagCard key={ tag.id } tag={ tag } />)
-    console.log(book)
+
+    const reviewCards = bookReviews.map(review => <ReviewCard key={ review.id } review={ review } />)
+
   return (
     <div>
         <div id="header">
@@ -83,7 +77,9 @@ const BookDetail = ({ loggedIn, books, tags, setTag }) => {
             </div>
             <div>
                 <h3 id="heading">Reviews: </h3>
-                {/* <p>{ book.review.first }</p> */}
+                <div id="review-cards">
+                { reviewCards }
+                </div>
             </div>
         </div>
     </div>

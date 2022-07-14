@@ -187,3 +187,27 @@ input {
     background-position: 200% center;
   }
 }
+
+#review-list {
+  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 20px;
+  list-style: none;
+}
+
+#author-div {
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-right: 80px;
+}
+
+#author-info {
+  margin-left: 50px;
+}
+
+
+#review-cards {
+  margin-left: 50px;
+}

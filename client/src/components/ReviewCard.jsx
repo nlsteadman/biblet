@@ -1,9 +1,15 @@
 import React from 'react'
 
-const ReviewCard = () => {
+const ReviewCard = ({ review }) => {
+  console.log(review)
+
   return (
-    <div>ReviewCard</div>
+    <div>
+        <p>{ review.content }</p>
+        <p>- { review.user.username }</p>
+    </div>
   )
 }
+
 
 export default ReviewCard

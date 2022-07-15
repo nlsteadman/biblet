@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TagBookCard = ({ book, authors }) => {
+  const navigate = useNavigate();
 
 const authorInfo = authors.find(author => author.id === book.author_id)
 
@@ -12,6 +14,8 @@ const authorInfo = authors.find(author => author.id === book.author_id)
         <div id="bookinfo">
             <p>Author: { authorInfo.name }</p>
             <p>{ book.description }</p>
+            <button onClick={ () => navigate(`/books/${ book.id }`) }>Click for more</button>
+
         </div>
     </div>
   )

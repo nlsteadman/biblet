@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import TagBookCard from './BookCard';
+import TagBookCard from './TagBookCard';
 
-const Tag = ({ loggedIn, books, tags }) => {
+const Tag = ({ loggedIn, tags, authors }) => {
     const { id } = useParams()
     const [tag, setTag] = useState({ books: [] });
 
@@ -24,12 +24,12 @@ const Tag = ({ loggedIn, books, tags }) => {
 
     const bookCards = () => {
         if (tag) {
-            tag.books.map(book => <TagBookCard key={ book.id } book={ book } />)
+            return tag.books.map(book => <TagBookCard key={ book.id } book={ book } authors={ authors} />)
         }
     }
     // const bookCards = tag.books.map(book => <TagBookCard key={ book.id } book={ book } />)
 
-    console.log(tag)
+    console.log(bookCards())
   return (
     <div>
         <div>

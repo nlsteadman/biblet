@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Tag from "./components/Tag";
 import { baseUrl, headers, getToken } from './Globals';
+import UserPage from "./components/UserPage";
 
 
 const App = () => {
@@ -94,6 +95,7 @@ const App = () => {
           <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
           <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } tags={ tags } setTags={ setTags } reviews={ reviews } setReviews={ setReviews } />} />
           <Route path="/tags/:id" element={<Tag loggedIn={ loggedIn } books={ books } tags={ tags } />} />
+          <Route path="/users/:id" element={<UserPage loggedIn={ loggedIn } books={ books } tags={ tags } />} />
       </Routes>
     </Router>
   );

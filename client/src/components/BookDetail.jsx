@@ -55,7 +55,8 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, curren
                 review: {
                     "user_id": currentUser.id,
                     "book_id": id,
-                    "content": ""
+                    "content": "",
+                    "finished": false
                 }
             }
     

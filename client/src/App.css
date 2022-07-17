@@ -93,6 +93,10 @@ input {
   padding-left: 50px;
 }
 
+#bookinfo button {
+  margin-top: 30px;
+}
+
 #heading {
   font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
   font-size: 30px;

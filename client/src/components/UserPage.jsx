@@ -17,12 +17,6 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors }) => {
   
   const readingList = read.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } />)
 
-  // const readingList = () => {
-  //   if (read) {
-  //     return read.map(book => <UserBookCard key={ book.id } review={ book } authors={ authors } />)
-  //   }
-  // }
-
   
   const toBeRead = () => {
     if (!readingList) {

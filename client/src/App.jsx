@@ -116,6 +116,10 @@ const App = () => {
     setReviews([...reviews, review]);
   }
 
+  const addToFinishedList = review => {
+    
+  }
+
   return (
     <Router>
       <Navbar loggedIn={ loggedIn } logoutUser={ logoutUser } currentUser={ currentUser } />

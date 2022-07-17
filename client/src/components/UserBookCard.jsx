@@ -15,8 +15,8 @@ const UserBookCard = ({ book, authors }) => {
         <div id="bookinfo">
             <p>Author: { authorInfo.name }</p>
             <p>{ book.description }</p>
-            <button onClick={ () => navigate(`/books/${ book.id }`) }>Click for more</button>
-
+            <button onClick={ () => navigate(`/books/${ book.id }`) }>Click for more</button><br/>
+            <button>Done reading!</button>
         </div>
     </div>
     </div>

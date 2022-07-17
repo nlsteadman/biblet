@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authorized, only: [:index]
+  skip_before_action :authorized, only: [:index, :create]
   before_action :set_review, only: [:show, :update, :destroy]
 
   # GET /reviews
@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
-    render json: @review, include: [:users, :books]
+    render json: @review, include: [:user, :book]
   end
 
   # POST /reviews

@@ -123,6 +123,10 @@ input {
   justify-content: center;
 }
 
+#reading-list-button {
+  padding-top: 100px;
+}
+
 #detail-info {
   padding-left: 50px;
   padding-right: 80px;

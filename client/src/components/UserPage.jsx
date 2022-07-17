@@ -1,10 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import pic from '../assets/pic.png';
 import { useNavigate } from 'react-router-dom';
+import UserBookCard from './UserBookCard';
 
-
-const UserPage = ({ users, currentUser }) => {
+const UserPage = ({ currentUser, reviews, books, loggedIn, authors }) => {
   const navigate = useNavigate();
+  const [myReviews, setMyReviews] = useState([]);
+
+  useEffect(() => {
+    if( loggedIn ) {
+        setMyReviews(reviews.filter(myReviews => myReviews.user_id === currentUser.id));
+    }
+  }, [loggedIn, currentUser.id, reviews])
+
+  const read = myReviews.map(review => review.book)
+  
+  const readingList = read.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } />)
+
+  // const readingList = () => {
+  //   if (read) {
+  //     return read.map(book => <UserBookCard key={ book.id } review={ book } authors={ authors } />)
+  //   }
+  // }
+
+  
+  const toBeRead = () => {
+    if (!readingList) {
+      return (
+        <div>
+          <h3>Nothing to read? <button onClick={() => navigate('/books')}>Start adding books!</button></h3>
+        </div>
+      )
+    }
+    if (readingList) {
+      return (
+        <div>
+          { readingList }
+        </div>
+      )
+    }
+  }
+
 
   return (
     <div>
@@ -34,7 +70,7 @@ const UserPage = ({ users, currentUser }) => {
           <h1>Reading List:</h1>
         </div>
         <div>
-          <h3>Nothing to read? <button onClick={() => navigate('/books')}>Start adding books!</button></h3>
+          { toBeRead() }
         </div>
         <div id="reading-list">
           <h1>Finished books:</h1>

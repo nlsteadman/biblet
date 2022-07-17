@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 import TagCard from './TagCard';
 import ReviewCard from './ReviewCard';
+import { baseUrl, headers } from '../Globals';
 
 
-const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
+const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, currentUser, addToReadingList }) => {
     const [book, setBook] = useState({ tags: [], reviews: [] });
     const { id } = useParams();
     const navigate = useNavigate();
@@ -46,6 +47,35 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
 
     const reviewCards = bookReviews.map(review => <ReviewCard key={ review.id } review={ review } />)
 
+
+        
+    const handleSubmit = () => {
+        if (loggedIn) {
+            const params = {
+                review: {
+                    "user_id": currentUser.id,
+                    "book_id": id,
+                    "content": ""
+                }
+            }
+    
+            fetch(baseUrl + "/reviews", {
+                method: "POST",
+                headers,
+                body: JSON.stringify(params)
+            })
+                .then(r => r.json())
+                .then(data => {
+                    addToReadingList(data);
+                    alert("Added to reading list!")
+                })
+        }
+    }
+        
+    
+    
+
+
   return (
     <div>
         <div id="header">
@@ -64,9 +94,14 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews }) => {
             <div id="detail-book-img">
                 <img src={ book.image_url } alt="a book cover" height="550" width="400"/>
             </div>
-            <div id="tags">
-                <h3 id="heading">Tags: </h3>
-                { tagCards }
+            <div>
+                <div id="tags">
+                    <h3 id="heading">Tags: </h3>
+                    { tagCards }
+                </div>
+                <div id="reading-list-button">
+                    <button onClick={ handleSubmit }>Add to my reading list!</button>
+                </div>
             </div>
         </div>
         <div id="detail-info">

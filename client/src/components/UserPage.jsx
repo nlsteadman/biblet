@@ -3,9 +3,11 @@ import pic from '../assets/pic.png';
 import { useNavigate } from 'react-router-dom';
 import UserBookCard from './UserBookCard';
 
-const UserPage = ({ currentUser, reviews, books, loggedIn, authors }) => {
+const UserPage = ({ currentUser, reviews, books, loggedIn, authors, addToFinishedList }) => {
   const navigate = useNavigate();
   const [myReviews, setMyReviews] = useState([]);
+  const [finished, setFinished] = useState([]);
+  const [notFinished, setNotFinished] = useState([]);
 
   useEffect(() => {
     if( loggedIn ) {
@@ -13,28 +15,45 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors }) => {
     }
   }, [loggedIn, currentUser.id, reviews])
 
-  const read = myReviews.map(review => review.book)
+  useEffect(() => {
+    if( myReviews ) {
+      setFinished(myReviews.filter(review => review.finished === true))
+    }
+  }, [myReviews])
+
+  useEffect(() => {
+    if( myReviews ) {
+      setNotFinished(myReviews.filter(review => review.finished === false))
+    }
+  }, [myReviews])
+
+  const read = finished.map(review => review.book)
+
+  const notRead = notFinished.map(review => review.book)
+
+  const readingListFinished = read.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } />)
   
-  const readingList = read.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } />)
+  const readingListNotFinished = notRead.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } />)
 
   
   const toBeRead = () => {
-    if (!readingList) {
+    if (!readingListNotFinished) {
       return (
         <div>
           <h3>Nothing to read? <button onClick={() => navigate('/books')}>Start adding books!</button></h3>
         </div>
       )
     }
-    if (readingList) {
+    if (readingListNotFinished) {
       return (
         <div>
-          { readingList }
+          { readingListNotFinished }
         </div>
-      )
+      ) 
     }
   }
 
+  
 
   return (
     <div>
@@ -68,6 +87,9 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors }) => {
         </div>
         <div id="reading-list">
           <h1>Finished books:</h1>
+        </div>
+        <div>
+          { readingListFinished }
         </div>
         <div id="reading-list">
           <h1>My reviews:</h1>

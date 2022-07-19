@@ -105,30 +105,29 @@ input {
 
 #detail-card {
   margin-left: 50px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   margin-right: 80px;
 }
 
 #detail-book-img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
+  margin-left: 120px;
+  margin-right: 150px;
+  width: 80%;
 }
 
 #tags{
   flex-basis: 20%;
-  /* margin-right: 50px; */
   outline:rgb(234, 21, 28) dotted 10px;
   padding-bottom: 40px;
-  justify-content: center;
 }
 
 #reading-list-button {
   padding-top: 100px;
+  width: 250px;
 }
 
 #detail-info {

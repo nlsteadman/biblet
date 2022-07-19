@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ReviewCard = ({ review }) => {
-  console.log(review)
 
   return (
     <div>

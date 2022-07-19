@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import pic from '../assets/pic.png';
 import { useNavigate } from 'react-router-dom';
 import UserBookCard from './UserBookCard';
+import { baseUrl } from '../Globals';
 
-const UserPage = ({ currentUser, reviews, books, loggedIn, authors, addToFinishedList }) => {
+const UserPage = ({ currentUser, reviews, books, loggedIn, authors, addToFinishedList, deleteReview }) => {
   const navigate = useNavigate();
   const [myReviews, setMyReviews] = useState([]);
   const [finished, setFinished] = useState([]);
@@ -27,24 +28,24 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, addToFinishe
     }
   }, [myReviews])
 
-  const read = finished.map(review => review.book)
+  const read = finished.map(review => [review.book, review])
 
-  const notRead = notFinished.map(review => review.book)
+  const notRead = notFinished.map(review => [review.book, review])
 
-  const readingListFinished = read.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } />)
+  const readingListFinished = read.map(arr => <UserBookCard key={ arr[0].id } book={ arr[0] } review={ arr[1] } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } deleteReview={ deleteReview } />)
   
-  const readingListNotFinished = notRead.map(book => <UserBookCard key={ book.id } book={ book } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } />)
+  const readingListNotFinished = notRead.map(arr => <UserBookCard key={ arr[0].id } book={ arr[0] } review={ arr[1] } authors={ authors } loggedIn={ loggedIn } addToFinishedList={ addToFinishedList } myReviews={ myReviews } finished={ finished } deleteReview={ deleteReview } />)
 
   
   const toBeRead = () => {
-    if (!readingListNotFinished) {
+    if (readingListNotFinished.length === 0) {
       return (
         <div>
           <h3>Nothing to read? <button onClick={() => navigate('/books')}>Start adding books!</button></h3>
         </div>
       )
     }
-    if (readingListNotFinished) {
+    if (readingListNotFinished.length > 0) {
       return (
         <div>
           { readingListNotFinished }
@@ -52,7 +53,6 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, addToFinishe
       ) 
     }
   }
-
   
 
   return (

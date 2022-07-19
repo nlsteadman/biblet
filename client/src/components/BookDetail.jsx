@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 import TagCard from './TagCard';
 import ReviewCard from './ReviewCard';
-import { baseUrl, headers } from '../Globals';
+import { baseUrl, headers, getToken } from '../Globals';
 
 
 const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, currentUser, addToReadingList }) => {
@@ -62,13 +62,16 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, curren
     
             fetch(baseUrl + "/reviews", {
                 method: "POST",
-                headers,
+                headers: {
+                    ...headers,
+                    ...getToken()
+                },
                 body: JSON.stringify(params)
             })
                 .then(r => r.json())
-                .then(data => {
-                    addToReadingList(data);
-                    alert("Added to reading list!")
+                .then(review => {
+                    addToReadingList(review);
+                    navigate('/users/:id')
                 })
         }
     }

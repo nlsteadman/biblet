@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Tag from "./components/Tag";
 import { baseUrl, headers, getToken } from './Globals';
 import UserPage from "./components/UserPage";
+import ReviewForm from "./components/ReviewForm";
 
 
 const App = () => {
@@ -116,7 +117,7 @@ const App = () => {
     setReviews([...reviews, review]);
   }
 
-  const addToFinishedList = review => {
+  const updateReview = review => {
     setReviews(reviews.map(r => r.id === review.id ? review : r))
   }
 
@@ -124,6 +125,7 @@ const App = () => {
     setReviews(reviews.filter(r => r.id !== review.id))
   }
 
+  
   return (
     <Router>
       <Navbar loggedIn={ loggedIn } logoutUser={ logoutUser } currentUser={ currentUser } />
@@ -134,7 +136,8 @@ const App = () => {
           <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
           <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } tags={ tags } setTags={ setTags } reviews={ reviews } setReviews={ setReviews } currentUser={ currentUser } addToReadingList={ addToReadingList }/>} />
           <Route path="/tags/:id" element={<Tag loggedIn={ loggedIn } tags={ tags } authors={ authors } />} />
-          <Route path="/users/:id" element={<UserPage loggedIn={ loggedIn } books={ books } currentUser={ currentUser } reviews={ reviews } authors={ authors } addToFinishedList={ addToFinishedList } deleteReview={ deleteReview }/>} />
+          <Route path="/users/:id" element={<UserPage loggedIn={ loggedIn } books={ books } currentUser={ currentUser } reviews={ reviews } authors={ authors } updateReview={ updateReview } deleteReview={ deleteReview }/>} />
+          <Route path="/reviews/update/:id" element={<ReviewForm loggedIn={ loggedIn } updateReview={ updateReview } />} />
       </Routes>
     </Router>
   );

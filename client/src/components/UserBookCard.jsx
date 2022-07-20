@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { baseUrl, headers, getToken } from '../Globals';
 
-const UserBookCard = ({ book, authors, loggedIn, addToFinishedList, myReviews, finished, deleteReview, review }) => {
+const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review }) => {
   const navigate = useNavigate();
 
-  const authorInfo = authors.find(author => author.id === book.author_id)
+  const authorInfo = authors.find(author => author.id === review.book.author_id)
+
+  const authorDisplay = () => {
+    if (authorInfo) {
+      return (
+        <div>
+          <p>Author: { authorInfo.name }</p>
+        </div>
+      )
+    }
+  }
       
   const handleDone = () => {
     const params = {
@@ -25,21 +35,25 @@ const UserBookCard = ({ book, authors, loggedIn, addToFinishedList, myReviews, f
           body: JSON.stringify(params)
         })
           .then(r => r.json())
-          .then((data) => addToFinishedList(data))
+          .then((data) => updateReview(data))
       }
     }
   } 
 
+  
+
   const handleDelete = () => {
-    if ( loggedIn ) {
-      fetch(baseUrl + "/reviews/" + review.id, {
-        method: "DELETE",
-        headers: {
-          ...headers,
-          ...getToken()
-        }
-      })
-          .then((data) => deleteReview(review.id))
+    if (review) {
+      if ( loggedIn ) {
+        fetch(baseUrl + "/reviews/" + review.id, {
+          method: "DELETE",
+          headers: {
+            ...headers,
+            ...getToken()
+          }
+        })
+          .then((data) => deleteReview(data))
+      }
     }
   }
   
@@ -61,20 +75,23 @@ const UserBookCard = ({ book, authors, loggedIn, addToFinishedList, myReviews, f
     }
   }
 
-
+  
   return (
     <div>
       <div id="bookcard">
         <div id="bookimage">
-            <img src={ book.image_url } alt="book cover" height="450" width="300" />
+            <img src={ review.book.image_url } alt="book cover" height="550" width="375" />
         </div>
         <div id="bookinfo">
-            <p>Author: { authorInfo.name }</p>
-            <p>{ book.description }</p>
-            <button onClick={ () => navigate(`/books/${ book.id }`) }>Click for more</button>
+            <div>{ authorDisplay() }</div>
+            <br/>
+            <p>{ review.book.description }</p>
+            <button onClick={ () => navigate(`/books/${ review.book.id }`) }>Click for more</button>
             <br/>
             <div>{ finishedButton() }</div>
             <button onClick={ handleDelete }>Remove from list</button>
+            <br/>
+            <button onClick={ () => navigate(`/reviews/update/${ review.id }`)}>Leave a review</button>
         </div>
       </div>
     </div>

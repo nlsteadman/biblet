@@ -54,16 +54,15 @@ const App = () => {
         .then(user => loginUser(user))
     }
 
-    if(loggedIn) {
-      fetch(baseUrl + '/books', {
-        headers: {
-          ...headers,
-          ...getToken()
-        }
-      })
-        .then(r => r.json())
-        .then(data => setBooks(data))
-    }
+    fetch(baseUrl + '/books', {
+      headers: {
+        ...headers,
+        ...getToken()
+      }
+    })
+      .then(r => r.json())
+      .then(data => setBooks(data))
+    
 
     if(loggedIn) {
       fetch(baseUrl + '/tags', {

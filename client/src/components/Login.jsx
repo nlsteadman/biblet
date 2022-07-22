@@ -49,8 +49,8 @@ const Login = ({ loginUser, loggedIn }) => {
                 <img src={ pic } alt="logo" height="140px" width="140px" />
             </div>
         </div>
-        <h2>Login</h2>
-        <form onSubmit={ handleSubmit }>
+        <h1 id="login-header">Login</h1>
+        <form id="login-form" onSubmit={ handleSubmit }>
             <div>
                 <label htmlFor="username">Username: </label>
                 <input type="text" name="username" id="username" value={ username } onChange={ e => setUsername(e.target.value) }/>

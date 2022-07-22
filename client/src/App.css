@@ -247,3 +247,43 @@ input {
   color:rgb(234, 21, 28);
 }
 
+#review-card {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#review-form-title {
+  margin-left: 50px;
+  color:rgb(234, 21, 28);
+}
+
+#review-form {
+  margin-left: 50px;
+}
+
+#login-header {
+  margin-left: 50px;
+  color:rgb(234, 21, 28);
+}
+
+#login-form {
+  margin-left: 50px;
+}
+
+#signup-form-header {
+  margin-left: 50px;
+  color:rgb(234, 21, 28);
+}
+
+#signup-form {
+  margin-left: 50px;
+}
+
+#books {
+  margin-left: 50px;
+  color:rgb(234, 21, 28);
+}
+
+#greeting {
+  color:rgb(234, 21, 28);
+}

@@ -31,11 +31,7 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
   }, [myReviews])
 
   
-  const readingListFinished = () => {
-    if (finished) {
-      return finished.map(review => <UserBookCard key={ review.id } review={ review } authors={ authors } loggedIn={ loggedIn } updateReview={ updateReview } deleteReview={ deleteReview } />)
-    }
-  }
+  const readingListFinished = finished.map(review => <UserBookCard key={ review.id } review={ review } authors={ authors } loggedIn={ loggedIn } updateReview={ updateReview } deleteReview={ deleteReview } />)
    
   const readingListNotFinished = notFinished.map(review => <UserBookCard key={ review.id } review={ review } authors={ authors } loggedIn={ loggedIn } updateReview={ updateReview } deleteReview={ deleteReview } />)
 
@@ -65,7 +61,6 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
     }
   }
   
-  console.log(reviews)
   return (
     <div>
       <div id="header">
@@ -100,7 +95,7 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
         
         <div>
           <h1 id="reading-list">Finished books:</h1>
-          <div>{ readingListFinished() }</div>
+          <div>{ readingListFinished }</div>
         </div>
         
         <div>

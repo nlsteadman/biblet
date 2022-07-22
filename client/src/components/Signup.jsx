@@ -50,8 +50,8 @@ const Signup = ({ loginUser, loggedIn }) => {
                 <img src={ pic } alt="logo" height="140px" width="140px" />
             </div>
         </div>
-        <h2>Create Account</h2>
-        <form onSubmit={ handleSubmit }>
+        <h1 id="signup-form-header">Create Account</h1>
+        <form id="signup-form" onSubmit={ handleSubmit }>
             <div>
                 <label htmlFor="username">Username: </label>
                 <input type="text" name="username" id="username" value={ username } onChange={ e => setUsername(e.target.value) }/>

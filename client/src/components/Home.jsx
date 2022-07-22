@@ -6,7 +6,11 @@ import BookCard from './BookCard';
 
 const Home = ({ books }) => {
 
-    const bookCards = books.map(book => <BookCard key={ book.id } book={ book } />)
+    const bookCards = () => {
+        if (books) {
+            return books.map(book => <BookCard key={ book.id } book={ book } />)
+        }
+    } 
 
   return (
     <div>
@@ -45,7 +49,7 @@ const Home = ({ books }) => {
             <br/>
             <br/>
             <div>
-                { bookCards }
+                <div>{ bookCards() }</div>
             </div>
         </div>
     </div>

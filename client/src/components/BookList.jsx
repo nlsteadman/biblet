@@ -28,7 +28,7 @@ const BookList = ({ loggedIn, books }) => {
                 <img src={ pic } alt="logo" height="140px" width="140px" />
             </div>
         </div>
-        <h2>Books</h2>
+        <h1 id="books">Books</h1>
         { bookCards }
     </div>
   )

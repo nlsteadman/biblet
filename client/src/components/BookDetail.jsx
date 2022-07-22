@@ -121,7 +121,6 @@ const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, curren
                 <div id="review-cards">
                 { reviewCards }
                 </div>
-                <button>Leave a review!</button>
             </div>
         </div>
     </div>

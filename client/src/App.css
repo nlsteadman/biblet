@@ -30,6 +30,23 @@ p {
   font-family: "PT Sans", Calibri, Tahoma, sans-serif;
   font-size: 20px;
 }
+
+li {
+  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+  font-size: 25px;
+}
+
+#rainbow-ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+#rainbow-ul li::before {
+  content: url('assets/favicon.ico');
+  display: inline-block;
+  vertical-align: middle;
+}
   
 button {
   font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
@@ -99,7 +116,7 @@ input {
 
 #heading {
   font-family: "Amatic SC", "PT Sans", Calibri, Tahoma, sans-serif;
-  font-size: 30px;
+  font-size: 40px;
   color:rgb(234, 21, 28);
 }
 

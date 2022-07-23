@@ -11,6 +11,11 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
   const [finished, setFinished] = useState([]);
   const [notFinished, setNotFinished] = useState([]);
   
+  useEffect(() => {
+    if( !loggedIn ) {
+        navigate('/login');
+    }
+  }, [loggedIn, navigate])
 
   useEffect(() => {
     if( loggedIn ) {

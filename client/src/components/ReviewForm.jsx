@@ -9,7 +9,11 @@ const ReviewForm = ({ loggedIn, updateReview }) => {
   const navigate = useNavigate();
   const id = useParams();
 
-
+  useEffect(() => {
+    if( !loggedIn ) {
+        navigate('/login');
+    }
+  }, [loggedIn, navigate])
 
   const handleSubmit = e => {
       e.preventDefault();

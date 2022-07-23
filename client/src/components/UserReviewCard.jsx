@@ -11,8 +11,10 @@ const UserReviewCard = ({ review, books }) => {
       if (bookInfo) {
         return (
           <div id="review-card">
-            <p>{ review.content }</p>
-            <p>- { bookInfo.title }</p>
+            <ul id="rainbow-ul">
+              <li>{ review.content }</li>
+              <p>- { bookInfo.title }</p>
+            </ul>
           </div>
         )
       }

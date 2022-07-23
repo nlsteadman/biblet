@@ -4,8 +4,10 @@ const ReviewCard = ({ review }) => {
 
   return (
     <div>
-        <p>{ review.content }</p>
+      <ul id="rainbow-ul">
+        <li>{ review.content }</li>
         <p>- { review.user.username }</p>
+      </ul>
     </div>
   )
 }

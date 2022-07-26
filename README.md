@@ -4,6 +4,10 @@ Biblet is a full stack app using React and Rails. It is a summer reading list fo
 
 The objective of this project is to showcase work that I did for Flatiron School.
 
+## Heroku app
+
+https://biblet.herokuapp.com/
+
 ## Requirements
 
 * node 16.15.1

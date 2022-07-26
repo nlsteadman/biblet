@@ -7,7 +7,7 @@ import ReviewCard from './ReviewCard';
 import { baseUrl, headers, getToken } from '../Globals';
 
 
-const BookDetail = ({ loggedIn, books, tags, setTag, reviews, setReviews, currentUser, addToReadingList }) => {
+const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList }) => {
     const [book, setBook] = useState({ tags: [], reviews: [] });
     const { id } = useParams();
     const navigate = useNavigate();

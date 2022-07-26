@@ -52,7 +52,7 @@ const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review })
             ...getToken()
           }
         })
-          .then((data) => deleteReview(data))
+          .then((data) => deleteReview(review))
       }
     }
   }
@@ -64,6 +64,23 @@ const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review })
         return (
           <div>
               <button onClick={ handleDone }>Finished reading</button>
+          </div>
+        )
+      }
+      if (review.finished === true) {
+        return (
+          null
+        )
+      }
+    }
+  }
+
+  const deleteButton = () => {
+    if (review) {
+      if (review.finished === false) {
+        return (
+          <div>
+            <button onClick={ handleDelete }>Remove from list</button>
           </div>
         )
       }
@@ -89,8 +106,7 @@ const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review })
             <button onClick={ () => navigate(`/books/${ review.book.id }`) }>Click for more</button>
             <br/>
             <div>{ finishedButton() }</div>
-            <button onClick={ handleDelete }>Remove from list</button>
-            <br/>
+            <div>{ deleteButton() }</div>
             <button onClick={ () => navigate(`/reviews/update/${ review.id }`)}>Leave a review</button>
         </div>
       </div>

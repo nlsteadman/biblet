@@ -4,6 +4,7 @@ class Book < ApplicationRecord
     belongs_to :author
     has_many :booktags
     has_many :tags, through: :booktags
+    
     validates :title, presence: true
     validates :author_id, presence: true
 end

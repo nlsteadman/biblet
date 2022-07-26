@@ -20,7 +20,6 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [authors, setAuthors] = useState([]);
-  const [users, setUsers] = useState([]);
   
 
   const loginUser = user => {
@@ -98,16 +97,7 @@ const App = () => {
         .then(data => setAuthors(data))
     }
 
-    if(loggedIn) {
-      fetch(baseUrl + '/users', {
-        headers: {
-            ...headers,
-            ...getToken()
-        }
-      })
-        .then(r => r.json())
-        .then(data => setUsers(data))
-    }
+    
 
 
   }, [loggedIn])
@@ -133,7 +123,7 @@ const App = () => {
           <Route path="/signup" element={<Signup loginUser={ loginUser } loggedIn={ loggedIn } />} />
           <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn } />} />
           <Route path="/books" element={<BookList loggedIn={ loggedIn } books={ books } />} />
-          <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } tags={ tags } setTags={ setTags } reviews={ reviews } setReviews={ setReviews } currentUser={ currentUser } addToReadingList={ addToReadingList }/>} />
+          <Route path="/books/:id" element={<BookDetail loggedIn={ loggedIn } books={ books } reviews={ reviews } currentUser={ currentUser } addToReadingList={ addToReadingList }/>} />
           <Route path="/tags/:id" element={<Tag loggedIn={ loggedIn } tags={ tags } authors={ authors } />} />
           <Route path="/users/:id" element={<UserPage loggedIn={ loggedIn } books={ books } currentUser={ currentUser } reviews={ reviews } authors={ authors } updateReview={ updateReview } deleteReview={ deleteReview }/>} />
           <Route path="/reviews/update/:id" element={<ReviewForm loggedIn={ loggedIn } updateReview={ updateReview } />} />

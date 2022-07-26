@@ -40,7 +40,7 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
    
   const readingListNotFinished = notFinished.map(review => <UserBookCard key={ review.id } review={ review } authors={ authors } loggedIn={ loggedIn } updateReview={ updateReview } deleteReview={ deleteReview } />)
 
-  
+
   const toBeRead = () => {
     if (notFinished) {
       if (readingListNotFinished.length === 0) {

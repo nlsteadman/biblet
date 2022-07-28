@@ -19,7 +19,9 @@ const UserPage = ({ currentUser, reviews, books, loggedIn, authors, updateReview
 
   useEffect(() => {
     if( loggedIn ) {
-      setMyReviews(reviews.filter(myReviews => myReviews.user_id === currentUser.id));
+      if (reviews) {
+        setMyReviews(reviews.filter(myReviews => myReviews.user_id === currentUser.id))
+      }
     }
   }, [loggedIn, currentUser.id, reviews])
 

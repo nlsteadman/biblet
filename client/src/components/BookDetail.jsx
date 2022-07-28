@@ -9,6 +9,7 @@ import { headers, getToken } from '../Globals';
 
 const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList }) => {
     const [book, setBook] = useState({ tags: [], reviews: [] });
+    const [bookReviews, setBookReviews] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -25,7 +26,13 @@ const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList })
         }
     }, [loggedIn])
 
-    const bookReviews = reviews.filter(review => review.book_id.toString() === id);
+    useEffect(() => {
+        if (reviews) {
+            setBookReviews(reviews.filter(review => review.book_id.toString() === id))
+        }
+    }, [reviews])
+
+    // const bookReviews = reviews.filter(review => review.book_id.toString() === id);
 
     const authorDetails = () => {
         if (book.author) {

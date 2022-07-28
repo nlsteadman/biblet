@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 import TagCard from './TagCard';
 import ReviewCard from './ReviewCard';
-import { baseUrl, headers, getToken } from '../Globals';
+import { headers, getToken } from '../Globals';
 
 
 const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList }) => {
@@ -60,7 +60,7 @@ const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList })
                 }
             }
     
-            fetch(baseUrl + "/reviews", {
+            fetch("/reviews", {
                 method: "POST",
                 headers: {
                     ...headers,

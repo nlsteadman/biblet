@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { baseUrl, headers } from '../Globals';
+import { headers } from '../Globals';
 import { useNavigate } from 'react-router-dom';
 import pic from '../assets/pic.png';
 
@@ -23,7 +23,7 @@ const Login = ({ loginUser, loggedIn }) => {
             password
         }
 
-        fetch(baseUrl + '/login', {
+        fetch('/login', {
             method: "POST",
             headers,
             body: JSON.stringify(params)

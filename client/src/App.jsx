@@ -8,7 +8,7 @@ import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Tag from "./components/Tag";
-import { baseUrl, headers, getToken } from './Globals';
+import { headers, getToken } from './Globals';
 import UserPage from "./components/UserPage";
 import ReviewForm from "./components/ReviewForm";
 
@@ -42,7 +42,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     if(token && !loggedIn) {
-      fetch(baseUrl + '/get-current-user', {
+      fetch('/get-current-user', {
         method: "GET",
         headers: {
           ...headers,
@@ -53,7 +53,7 @@ const App = () => {
         .then(user => loginUser(user))
     }
 
-    fetch(baseUrl + '/books', {
+    fetch('/books', {
       headers: {
         ...headers,
         ...getToken()
@@ -64,7 +64,7 @@ const App = () => {
     
 
     if(loggedIn) {
-      fetch(baseUrl + '/tags', {
+      fetch('/tags', {
         headers: {
           ...headers,
           ...getToken()
@@ -75,7 +75,7 @@ const App = () => {
     }
 
     if(loggedIn) {
-      fetch(baseUrl + '/reviews', {
+      fetch('/reviews', {
         headers: {
             ...headers,
             ...getToken()
@@ -87,7 +87,7 @@ const App = () => {
   
 
     if(loggedIn) {
-      fetch(baseUrl + '/authors', {
+      fetch('/authors', {
         headers: {
             ...headers,
             ...getToken()

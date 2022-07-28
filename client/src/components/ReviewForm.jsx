@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { baseUrl, headers, getToken } from '../Globals';
+import { headers, getToken } from '../Globals';
 
 
 const ReviewForm = ({ loggedIn, updateReview }) => {
@@ -24,7 +24,7 @@ const ReviewForm = ({ loggedIn, updateReview }) => {
       }
       
       if (loggedIn) {
-        fetch(baseUrl + "/reviews/" + id.id, {
+        fetch("/reviews/" + id.id, {
           method: "PATCH",
           headers: {
             ...headers,

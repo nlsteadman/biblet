@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { baseUrl, headers, getToken } from '../Globals';
+import { headers, getToken } from '../Globals';
 
 const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review }) => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review })
 
     if (review) {
       if ( loggedIn ) {
-        fetch(baseUrl + "/reviews/" + review.id, {
+        fetch("/reviews/" + review.id, {
           method: "PATCH",
           headers: {
             ...headers,
@@ -45,7 +45,7 @@ const UserBookCard = ({ authors, loggedIn, updateReview, deleteReview, review })
   const handleDelete = () => {
     if (review) {
       if ( loggedIn ) {
-        fetch(baseUrl + "/reviews/" + review.id, {
+        fetch("/reviews/" + review.id, {
           method: "DELETE",
           headers: {
             ...headers,

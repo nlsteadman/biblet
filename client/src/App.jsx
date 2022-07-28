@@ -81,9 +81,7 @@ const App = () => {
             ...getToken()
         }
       })
-        .then(r => {
-          //debugger
-          r.json()})
+        .then(r => r.json())
         .then(data => setReviews(data))
     }
   

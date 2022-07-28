@@ -24,7 +24,7 @@ const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList })
         if( loggedIn ) {
             setBook(books.find(book => book.id.toString() === id));
         }
-    }, [loggedIn])
+    }, [loggedIn, books, id])
 
     useEffect(() => {
         if (reviews) {
@@ -32,7 +32,6 @@ const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList })
         }
     }, [reviews])
 
-    // const bookReviews = reviews.filter(review => review.book_id.toString() === id);
 
     const authorDetails = () => {
         if (book.author) {
@@ -67,7 +66,7 @@ const BookDetail = ({ loggedIn, books, reviews, currentUser, addToReadingList })
                 }
             }
     
-            fetch("/reviews", {
+            fetch('/reviews', {
                 method: "POST",
                 headers: {
                     ...headers,

@@ -27,9 +27,7 @@ const Tag = ({ loggedIn, tags, authors }) => {
             return tag.books.map(book => <TagBookCard key={ book.id } book={ book } authors={ authors} />)
         }
     }
-    // const bookCards = tag.books.map(book => <TagBookCard key={ book.id } book={ book } />)
 
-    console.log(bookCards())
   return (
     <div>
         <div>

@@ -14,6 +14,7 @@ const BookList = ({ loggedIn, books }) => {
     }, [loggedIn, navigate])
 
     const bookCards = books.map(book => <BookCard key={ book.id } book={ book } />)
+
     
   return (
     <div>

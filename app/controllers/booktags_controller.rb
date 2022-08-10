@@ -1,5 +1,5 @@
 class BooktagsController < ApplicationController
-  # skip_before_action :authorized, only: [:index, :create]
+  skip_before_action :authorized, only: [:index, :create]
   before_action :set_booktag, only: [:show, :update, :destroy]
 
   # GET /booktags
